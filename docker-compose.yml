@@ -1,0 +1,17 @@
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    expose:
+      - 32400
+      - 33400
+    environment:
+      - TZ=America/Guayaquil
+      - PLEX_CLAIM=claim-1Ha6i5jn8gjTKn9Xv2z1
+    volumes:
+      - ./data/to/plex/database:/config
+      - ./data/to/transcode/temp:/transcode
+      - ./data/to/media:/data
+    network_mode: host
